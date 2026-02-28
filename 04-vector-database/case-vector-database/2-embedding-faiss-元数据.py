@@ -1,7 +1,7 @@
 import faiss
 import numpy as np
 
-from agent.embedding_model_openai import embeddings
+from agent.embedding_model_langchain import embeddings
 
 # 1. 导入 嵌入模型
 # 2. 准备示例文本和元数据

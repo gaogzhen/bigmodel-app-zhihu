@@ -1,6 +1,6 @@
 from langchain.agents import create_agent
 
-from agent.llm import llm
+from agent.llm import llm_gpt as llm
 
 
 def send_email(to: str, subject: str, body: str):
