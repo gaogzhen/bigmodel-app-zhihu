@@ -4,7 +4,7 @@ from agent.env_utils import CLOSEAI_BASE_URL, CLOSEAI_API_KEY, DASHSCOPE_API_KEY
 
 llm_chat_deepseek = ChatOpenAI(
     model="deepseek-r1-0528",
-    temperature=0.8,
+    temperature=0.5,
     api_key=DASHSCOPE_API_KEY,
     base_url=DASHSCOPE_BASE_URL
 )
