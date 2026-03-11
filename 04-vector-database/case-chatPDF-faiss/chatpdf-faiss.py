@@ -9,8 +9,8 @@ from logging import Logger
 from langchain_core.prompts import ChatPromptTemplate  # 聊天提示模板
 from langchain_core.output_parsers import StrOutputParser   # 字符串输出解析器
 
-from agent.llm import llm_chat_deepseek as llm
-from agent.embedding_model_langchain import embeddings
+from model.llm import llm_chat_deepseek as llm
+from model.embedding_model_langchain import embeddings
 
 def extract_text_with_page_numbers(pdf) -> Tuple[str, List[int]]:
     """

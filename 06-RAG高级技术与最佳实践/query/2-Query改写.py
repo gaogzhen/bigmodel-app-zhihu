@@ -4,7 +4,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 import json
 
-from agent.llm import llm_chat_deepseek as llm
+from model.llm import llm_chat_deepseek as llm
 
 
 def get_completion(instruction, user_message, input_vars=None):

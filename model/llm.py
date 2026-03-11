@@ -1,6 +1,6 @@
 from langchain_openai import OpenAI, ChatOpenAI
 
-from agent.env_utils import CLOSEAI_BASE_URL, CLOSEAI_API_KEY, DASHSCOPE_API_KEY, DASHSCOPE_BASE_URL
+from env_utils import CLOSEAI_BASE_URL, CLOSEAI_API_KEY, DASHSCOPE_API_KEY, DASHSCOPE_BASE_URL
 
 llm_chat_deepseek = ChatOpenAI(
     model="deepseek-r1-0528",

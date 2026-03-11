@@ -1,4 +1,4 @@
-from agent.embedding_model_langchain import embeddings
+from model.embedding_model_langchain import embeddings
 
 competition = embeddings.embeddings.create(
     model="text-embedding-v3",

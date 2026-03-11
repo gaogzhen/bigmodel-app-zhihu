@@ -1,8 +1,8 @@
 from langchain_classic.retrievers import MultiQueryRetriever
 from langchain_community.vectorstores import FAISS
 
-from agent.embedding_model_langchain import embeddings
-from agent.llm import llm_chat_deepseek as llm
+from model.embedding_model_langchain import embeddings
+from model.llm import llm_chat_deepseek as llm
 
 # 加载向量数据库，添加 allow_dangerous_deserialization=True 参数已允许反序列号
 vectorstore = FAISS.load_local("./faiss-1", embeddings=embeddings, allow_dangerous_deserialization=True)

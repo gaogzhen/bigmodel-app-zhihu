@@ -1,11 +1,10 @@
-import re
 from datetime import datetime
 
-from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
+from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-import json
 
-from agent.llm import llm_chat_deepseek as llm
+from model.llm import llm_chat_deepseek as llm
+from model.agent import mcp_agent
 
 
 def get_completion(instruction, user_message, input_vars=None):
@@ -175,6 +174,9 @@ class WebSearchQueryRewriter:
         # 第三步：生成搜索策略
         search_strategy = self.generate_search_strategy(query)
 
+
+        # 执行查询（您的原有查询改写逻辑可前置）
+        result = mcp_agent.invoke({"input": rewritten_result})
         return {
             "need_web_search": True,
             "search_reason": search_analysis.get('search_reason', ''),
@@ -184,7 +186,8 @@ class WebSearchQueryRewriter:
             "search_keywords": rewritten_result.get('search_keywords', []),
             "search_intent": rewritten_result.get('search_intent', ''),
             "suggested_sources": rewritten_result.get('suggested_sources', []),
-            "search_strategy": search_strategy
+            "search_strategy": search_strategy,
+            "search_result": result
         }
 
 
@@ -220,6 +223,7 @@ AI: "上海迪士尼乐园是一个很棒的选择！"
         print(f"    - 扩展关键词: {result1['search_strategy']['extended_keywords']}")
         print(f"    - 搜索平台: {result1['search_strategy']['search_platforms']}")
         print(f"    - 时间范围: {result1['search_strategy']['time_range']}")
+        print(f"  搜索结果: {result1['search_result']}")
     else:
         print(f"✗ 不需要联网搜索")
         print(f"  原因: {result1['reason']}")
